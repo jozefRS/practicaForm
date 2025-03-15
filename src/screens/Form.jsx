@@ -4,10 +4,12 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FaUser, FaEnvelope, FaPhone, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Fa0 } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom'; 
 
 export default function Form() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const navigate = useNavigate();
 
     const schema = yup.object().shape({
         name: yup.string().required("El nombre es obligatorio"),
@@ -40,6 +42,9 @@ export default function Form() {
     function onSubmit(data) {
         console.log('Formulario enviado');
         console.log(data);
+        localStorage.setItem('user', JSON.stringify(data));
+        navigate('/login');
+
     }
 
     return (
