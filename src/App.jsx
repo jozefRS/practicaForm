@@ -3,7 +3,6 @@ import './App.css'
 import Form from './screens/Form'
 
 function App() {
-
   return (
     <Form/>
   )
